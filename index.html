@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background-color: #121212;
+      color: #00ff00;
+      overflow-x: hidden;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 50px;
+    }
+    h1, h2 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 2.5rem;
+    }
+    h1 {
+      color: #00ff00;
+    }
+    
+    .button {
+      background-color: #ff007f;
+      color: #121212;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #ff80ff;
+    }
+    .terminal {
+      background-color: #1e1e1e;
+      border-radius: 5px;
+      padding: 20px;
+      font-size: 1.5rem;
+      margin-top: 30px;
+      color: #00ff00;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #121212;
+      color: #00ff00;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Matrix Background Effect */
+    .matrix {
+    position: relative;
+    width: 100%; /* Full width of the viewport */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent line breaks */
+    }
+
+    .matrix span {
+    position: absolute;
+    top: 0;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 20px;
+    opacity: 0;
+    animation: matrix 10s infinite;
+    }
+    @keyframes matrix {
+      to {
+        top: 100%;
+        opacity: 1;
+      }
+    }
+
+    /* Styling the text boxes */
+    .box {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+    .box h2, .box p {
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .box ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .box li {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+
+    /* Icons for Contact Info */
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .contact-info i {
+      margin-right: 10px;
+      font-size: 1.5rem;
+      color: #ff007f;
+    }
+
+    .resume-section {
+      display: flex;
+      justify-content: space-between;
+    }
+    .datetime {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 16px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    }
+    #contact {
+    padding: 50px;
+    background-color: #222;
+    color: #fff;
+    }
+
+    .contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    }
+
+    form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    }
+
+    input, textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    }
+
+
+  header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000; /* Black background for header */
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  }
+  /* Typing effect and date-time container */
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px; /* Space below navigation */
+  }
+  .typing {
+    font-size: 24px;
+    font-weight: bold;
+    animation: typing 4s steps(30, end) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #00ff00;
+    color: #e100ff; /* Green text */
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+  nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #000; /* Black background */
+      padding: 10px 0;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #00ff00; /* Green font */
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffffff; /* White on hover */
+    }
+    section {
+      scroll-margin-top: 120px; /* Extra space for smooth scrolling */
+    }
+ 
+    /* Add some spacing for sections */
+
+  </style>
+</head>
+<body>
+
+
+<div class="matrix">
+
+<!-- Dynamic matrix effect of code (with left-to-right flow) -->
+    <span style="left: 0%; animation-delay: 0s;">01010101 01010101 01010100 01010100 0101010 100101010 10101010 100010</span>
+    <span style="left: 10%; animation-delay: 0.5s;">$ ls public_dir</span>
+    <span style="left: 20%; animation-delay: 1s;">Documents  Downloads  Projects</span>
+    <span style="left: 30%; animation-delay: 1.5s;">$ echo "Hello, World!"</span>
+    <span style="left: 40%; animation-delay: 2s;">Hello, World!</span>
+    <span style="left: 50%; animation-delay: 2.5s;">$ cat /etc/passwd</span>
+    <span style="left: 60%; animation-delay: 3s;">root:x:0:0:root:/root:/bin/bash</span>
+    <span style="left: 70%; animation-delay: 3.5s;">$ whoami</span>
+    <span style="left: 80%; animation-delay: 4s;">user</span>
+    <span style="left: 90%; animation-delay: 4.5s;">$ sudo apt-get update</span>
+    <span style="left: 100%; animation-delay: 5s;">Reading package lists... Done</span>
+    <span style="left: 11%; animation-delay: 5.5s;">$ ls /usr/bin</span>
+    <span style="left: 12%; animation-delay: 6s;">python  node  gcc  bash</span>
+    <span style="left: 13%; animation-delay: 6.5s;">$ uname -r</span>
+    <span style="left: 14%; animation-delay: 7s;">5.11.0-34-generic</span>
+    <span style="left: 15%; animation-delay: 7.5s;">12345 user   20   0   1.5G   500M   100M S  0.0  5.1   0:05.23 myprocess</span>
+    <span style="left: 16%; animation-delay: 8s;">Security scan complete.</span>
+    <span style="left: 17%; animation-delay: 8.5s;">$ clear</span>
+    <span style="left: 18%; animation-delay: 9s;">[Terminal cleared]</span>
+    <!-- More Binary Numbers and Text -->
+    <span style="left: 19%; animation-delay: 9.5s;">10101010</span>
+    <span style="left: 20%; animation-delay: 10s;">11001100</span>
+    <span style="left: 21%; animation-delay: 10.5s;">10101010</span>
+    <span style="left: 22%; animation-delay: 11s;"></span>
+    <span style="left: 23%; animation-delay: 11.5s;">$ top</span>
+    <span style="left: 24%; animation-delay: 12s;">PID   USER   PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND</span>
+    <span style="left: 25%; animation-delay: 12.5s;">$ echo "Security scan complete."</span>
+    <span style="left: 26%; animation-delay: 13s;">$ df -h</span>
+    <span style="left: 27%; animation-delay: 13.5s;">10010101    Filesystem      Size  Used Avail Use% Mounted on</span>
+    <span style="left: 28%; animation-delay: 14s;">/dev/sda1       100G  30G   70G  30% /</span>
+    <span style="left: 29%; animation-delay: 14.5s;">$ ping google.com</span>
+    <span style="left: 30%; animation-delay: 15s;">Pinging google.com [172.217.10.46] with 32 bytes of data:</span>
+    <span style="left: 31%; animation-delay: 15.5s;">Reply from 172.217.10.46: bytes=32 time=20ms TTL=54</span>
+    <span style="left: 32%; animation-delay: 16s;">Reply from 172.217.10.46: bytes=32 time=21ms TTL=54</span>
+    <span style="left: 33%; animation-delay: 16.5s;">$ ps aux | grep apache</span>
+    <span style="left: 34%; animation-delay: 17s;">www-data  1234  0.0  0.1  11052  2384 ?        Ss   14:32   0:00 /usr/sbin/apache2 -k start</span>
+    <span style="left: 35%; animation-delay: 17.5s;">$ uptime</span>
+    <span style="left: 36%; animation-delay: 18s;"> 14:40:33 up 10 days,  3:15,  2 users,  load average: 0.02, 0.04, 0.05</span>
+
+    
+    <!-- <span style="left: 20%; animation-delay: 0.05s;">10101010</span>
+    <span style="left: 30%; animation-delay: 0.1s;">11001100</span>
+    <span style="left: 40%; animation-delay: 0.15s;">00110011</span>
+    <span style="left: 50%; animation-delay: 0.2s;">10101010</span>
+    <span style="left: 60%; animation-delay: 0.25s;">11110000</span>
+    <span style="left: 70%; animation-delay: 0.3s;">01101001</span>
+    <span style="left: 80%; animation-delay: 0.35s;">01000110</span>
+    <span style="left: 90%; animation-delay: 0.4s;">10011001</span>
+    <span style="left: 100%; animation-delay: 0.45s;">01010101</span>
+    <span style="left: 110%; animation-delay: 0.5s;">11010010</span>
+    <span style="left: 120%; animation-delay: 0.55s;">10110101</span>
+    <span style="left: 130%; animation-delay: 0.6s;">01100110</span>
+    <span style="left: 140%; animation-delay: 0.65s;">11001001</span> -->
+    </div>
+      
+      
+
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#certi">Certifications</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+  
+      <div class="header-content">
+        <div class="typing">Hacker. Security Expert. Innovator.</div>
+        <div id="datetime" class="datetime"></div>
+      </div>
+    </header>
+
+        
+    <!-- Teminal lookalike Information -->
+    <section id="home">
+        <br>
+        <br> 
+        <div class="terminal">
+        <p>~$ Welcome to my terminal</p>
+        <p>~$ whoami</p>
+        <p>I am a cybersecurity engineer with hands-on web development experience, focused on transforming complex 
+            challenges into user-friendly, intuitive, and visually appealing solutions.</p>        
+        <p>Based in Toronto, Canada, I am a CompTIA Security+ SY0-701 certified professional with a solid foundation in information technology. 
+            I specialize in access controls, network security, business continuity, and security operations. 
+            My passion lies in leveraging my skills to safeguard systems and infrastructure from emerging cyber threats.
+        </p>
+        </div>
+    </section> 
+   
+    <!-- CERTIFICATIONS (Skills) -->
+    <section id="certi">
+      <div class="box">
+        <h2>My certifications</h2>
+        <li>
+          <a href="https://www.credly.com/badges/c55e2c87-5019-4584-80d4-266eb900e92f/public_url" target="_blank" style="color: #00ff00; text-decoration: none;">CompTIA Security+ SY0-701</a>
+        </li>
+        <li>
+          <a href="https://www.credly.com/badges/77543466-9f16-47fe-8546-79261ea1da75/linked_in_profile" target="_blank" style="color: #00ff00; text-decoration: none;">ISC2 CC</a>
+        </li>
+        
+      </div>
+    </section>
+
+
+    <!-- What I'm Doing (Skills) -->
+    <section id="about">
+      <div class="box">
+        <h2>What I'm Doing</h2>
+        <div class="resume-section">
+          <div>
+            <i class="fas fa-shield-alt"></i><p><strong>Cybersecurity:</strong> Security infrastructure against potential cyber-attacks.</p>
+            <i class="fas fa-laptop-code"></i><p><strong>Web Development:</strong> High-quality development of sites at the professional level.</p>
+          </div>
+          <div>
+            <i class="fas fa-paint-brush"></i><p><strong>Web Design:</strong> The most modern and high-quality design made at a professional level.</p>
+            <i class="fas fa-robot"></i><p><strong>Machine Learning:</strong> Training datasets and generating models for research and development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume (Education & Experience) -->
+    <section id="resume">
+    <div class="box">
+      <h2>Resume</h2>
+      
+      <h3>Education</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li>University of Ontario Institute of Technology (UOIT), Masters in IT Security (2024–2025)</li>
+        <li>Durham College, Post Graduate Certificate in Cybersecurity (2024)</li>
+        <li>Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT), Bachelors in ICT (2019–2023)</li>
+      </ul>
+      
+      <h3>Experience</h3>
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li>Frontend Developer at Clomotech (2023): Built Screen for Client Company NCR Corporation</li>
+        <li>Research Intern at DA-IICT (2022–2023): Worked on Fake Image Generation and Detection</li>
+      </ul>
+    </div>
+  </section>
+  
+    <!-- Contact Information -->
+    <section id="contact">
+    <div class="box">
+          <h2>Contact Information</h2>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i><p>Email: <a href="mailto:admin@hellokunj.top">admin@hellokunj.top</a></p>
+          </div>
+
+          <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i><p>Location: Toronto, Canada</p>
+          </div>
+        </div>
+      </section>
+
+  </div>
+<!-- 
+    <section id="contact">
+        <div class="contact-container">
+          <h2>Contact Me</h2>
+          <form id="contactForm" method="POST" action="submit_form.php">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Your Email">
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+            
+            <button2 type="submit" id="submitBtn">Send Message</button>
+          </form>
+        </div>
+    </section>
+       -->
+
+
+  <footer>
+    <p>&copy; 2025 hellokunj.top | Portfolio</p>
+  </footer>
+  <script>
+    function updateDateTime() {
+      var currentDate = new Date();
+      var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+      var dateTimeString = currentDate.toLocaleString('en-US', options);
+  
+      document.getElementById('datetime').textContent = dateTimeString;
+    }
+  
+    // Update the date and time every second
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); // Initial call to display date-time immediately
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+    if (!name || !email || !message) {
+      alert("All fields are required!");
+      event.preventDefault();
+    }
+  });
+  </script>
+</body>
+
+  
+</html>
