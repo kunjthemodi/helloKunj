@@ -300,8 +300,8 @@
           <li><a href="#about">About</a></li>
           <li><a href="#certi">Certifications</a></li>
           <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact">Contact</a></li>
           <li><a href="#contact">TryHackMe</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
   
@@ -363,7 +363,7 @@
     <!-- Resume (Education & Experience) -->
     <section id="resume">
     <div class="box">
-      <h2>Resume</h2>
+      <h2>Education</h2>
       
       <h3>Education</h3>
       <ul style="list-style-type: disc; padding-left: 20px;">
@@ -381,13 +381,53 @@
   </section>
 
     <!-- tryhackme -->
-    <section id="tryhackme">
-      <div class="box">
-        <h2>TryHackMe Profile</h2>
-          <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1629466" style='border:none;'></iframe>
-        
-      </div>
-    </section>
+<section id="tryhackme">
+  <style>
+    #tryhackme {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .box {
+      background: #1e1e2f;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .box h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    .box iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+
+  <div class="box">
+    <h2>TryHackMe Profile</h2>
+    <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1629466"></iframe>
+  </div>
+</section>
 
     <section id="contact">
       <div class="box">
